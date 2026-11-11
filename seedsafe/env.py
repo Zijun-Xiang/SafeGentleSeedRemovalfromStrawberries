@@ -71,6 +71,7 @@ class SeedEnv:
         self.bid_arm_ab = [m.body("arm_a").id, m.body("arm_b").id]
         self.gid_flesh = m.geom("berry_flesh").id
         self.gid_decor = np.array([m.geom(f"dseed_{i}").id for i in range(N_DECOR)])
+        m.geom_sameframe[self.gid_decor] = 0      # these geoms are moved at reset
         self.pad_sid = [m.site("pad1").id, m.site("pad2").id]
         self.bid_tip_links = [m.body("right_finger1_link4").id, m.body("right_finger2_link4").id]
         # nominal tool tip in the palm frame (what the controller believes)
@@ -142,6 +143,8 @@ class SeedEnv:
         s = cfg.sensors
         self.tau_bias = rng.normal(0, s.torque_bias, 7) if randomize else np.zeros(7)
         self.tool_calib = rng.normal(0, s.tool_calib_err, 3) if randomize else np.zeros(3)
+        self.handeye_trans = rng.normal(0, s.handeye_trans, 3) if randomize else np.zeros(3)
+        self.handeye_rot = rng.normal(0, s.handeye_rot, 3) if randomize else np.zeros(3)
         self.q_cmd = ARM_HOME.copy()
         self.v_cmd = np.zeros(3); self.closure_rate = 0.0
         self.x_ref = self.tcp_est()[0].copy()
@@ -262,10 +265,16 @@ class SeedEnv:
         if self.jaw_cal is not None:
             self.obs.update(self.jaw_cal.estimate(self, q_fin, self._f_pad, self.closure))
 
-    def tare_force(self):
-        """Zero the tip force estimate (call in free space, just before an approach)."""
-        self.f_zero = self.f_est.copy()
-        self.obs["f"] = np.zeros(3)
+    def tare_force(self, ticks=40):
+        """Zero the tip force estimate: hold still in free space and average for 0.2 s."""
+        self.command(np.zeros(3), 0.0)
+        acc = np.zeros(3)
+        for _ in range(ticks):
+            self.tick()
+            acc += self.f_est
+        self.f_zero = acc / max(ticks, 1)
+        self.obs["f"] = self.f_est - self.f_zero
+        self.obs["v_exec"] = np.zeros(4)
 
     def _pad_forces(self):
         """Normal force on the thumb and index fingertips (the hand's fingertip force sensors)."""

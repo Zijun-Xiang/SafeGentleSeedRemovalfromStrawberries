@@ -124,8 +124,8 @@ class MicroContact:
             if fn > pk["force"]: pk["force"] = fn
             if ft_mag > pk["shear"]: pk["shear"] = ft_mag
             if delta > self.cfg.safe.visible_indent or fn > self.cfg.safe.visible_force:
-                if not self.marks or np.linalg.norm(self.marks[-1] - pl) > 5e-4:
-                    self.marks.append(pl.copy())
+                if all(np.linalg.norm(mk - pl) > 5e-4 for mk in self.marks):
+                    self.marks.append(pl.copy())           # a new visibly damaged spot
 
         # ---- tip <-> seed ---------------------------------------------------
         r_c = bp.seed_radius + self.r_tip

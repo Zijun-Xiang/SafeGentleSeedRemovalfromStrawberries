@@ -31,6 +31,7 @@ class ContactEstimator:
         self.h_cam = float(self.p_t @ self.n_t)            # surface height along n (camera)
         self.h_touch = None                                # surface height from touch
         self.touched = False
+        self.armed = False                                 # touch detection starts after the force tare
         self._count = 0
         self.f_n = 0.0
         self.f_lat = np.zeros(3)
@@ -52,7 +53,7 @@ class ContactEstimator:
         self.f_lat = f + self.f_n * self.n                 # sideways force the tip exerts
         if self.local:
             h_tip = float(p @ self.n)
-            if not self.touched:
+            if self.armed and not self.touched:
                 self._count = self._count + 1 if self.f_n > fp.touch_force else 0
                 if self._count >= 3:                       # touch: re-reference the surface
                     self.touched = True

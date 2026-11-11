@@ -82,11 +82,11 @@ class SeedPlanner:
                 self._opened = clos <= self.c_open + 0.01
             if np.linalg.norm(p - pre) < 3e-4 and abs(clos - goal_c) < 0.01 and dt_phase > 0.2:
                 self._set_phase(DESCEND, now)
+                self.request_tare = True                       # zero the force estimate in free space
+                return np.zeros(4), self.R_des
         if self.phase == DESCEND:
             keep_out = False
             v_lim = c.v_contact if est.height < 0.003 else 0.02
-            if dt_phase == 0.0:
-                self.request_tare = True                       # zero the force estimate in free space
             search = self.use_touch and not est.touched        # keep going down until touch is felt
             h_goal = self.h_surf - self.depth - (c.search_depth if search else 0.0)
             goal_p = ps + n * (h_goal - ps @ n)

@@ -71,8 +71,8 @@ class SensorParams:
     cam_height: int = 480
     cam_fovy: float = 32.0
     depth_noise: float = 0.00025   # depth noise std [m]
-    handeye_trans: float = 0.0003  # hand-eye calibration error std [m]
-    handeye_rot: float = 0.004     # [rad]
+    handeye_trans: float = 0.00012 # hand-eye calibration error std [m]
+    handeye_rot: float = 0.0012    # [rad]
     tool_calib_err: float = 0.00015  # error of the calibrated tip offset [m]
 
 

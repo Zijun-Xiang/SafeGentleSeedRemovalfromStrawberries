@@ -13,19 +13,24 @@ import numpy as np
 
 from .env import frame_from_axis
 
-_RENDERERS = {}
+_REN = dict(model=None, ren=None, failed=False)
 
 
 def _renderer(env):
-    key = id(env.m)
-    if key not in _RENDERERS:
+    """One off-screen renderer per process; re-created when the model changes (new berry)."""
+    if _REN["failed"]:
+        return None
+    if _REN["model"] is not env.m:
+        if _REN["ren"] is not None:
+            _REN["ren"].close()
         s = env.cfg.sensors
         try:
-            _RENDERERS[key] = mujoco.Renderer(env.m, s.cam_height, s.cam_width)
+            _REN["ren"] = mujoco.Renderer(env.m, s.cam_height, s.cam_width)
+            _REN["model"] = env.m
         except Exception as exc:          # no GL: fall back to the geometric model
-            _RENDERERS[key] = None
+            _REN["ren"], _REN["model"], _REN["failed"] = None, None, True
             print(f"[perception] no renderer ({type(exc).__name__}); using the geometric camera model")
-    return _RENDERERS[key]
+    return _REN["ren"]
 
 
 def survey_pose(env, height=0.105):

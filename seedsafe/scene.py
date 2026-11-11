@@ -206,7 +206,7 @@ def build_xml(cfg: Config) -> str:
 <mujoco model="seed_removal">
   <compiler angle="radian" meshdir=".." autolimits="true"/>
   <option timestep="{cfg.control.dt}" integrator="implicitfast" cone="elliptic" impratio="5" noslip_iterations="4"/>
-  <size memory="40M"/>
+  <size memory="16M"/>
   <visual>
     <global offwidth="1280" offheight="960" azimuth="140" elevation="-25"/>
     <quality shadowsize="4096"/>
@@ -215,7 +215,7 @@ def build_xml(cfg: Config) -> str:
   </visual>
   <asset>
     <texture type="skybox" builtin="gradient" rgb1="0.75 0.82 0.9" rgb2="0.95 0.95 0.97" width="256" height="256"/>
-    <texture name="grid" type="2d" builtin="checker" rgb1="0.62 0.64 0.66" rgb2="0.56 0.58 0.6" width="256" height="256"/>
+    <texture name="grid" type="2d" builtin="checker" rgb1="0.78 0.79 0.8" rgb2="0.72 0.73 0.74" width="256" height="256"/>
     <material name="grid" texture="grid" texrepeat="8 8" reflectance="0"/>
     <material name="steel" rgba="0.75 0.77 0.8 1" specular="0.9" shininess="0.9"/>
   </asset>
@@ -223,7 +223,7 @@ def build_xml(cfg: Config) -> str:
     <light pos="0.3 -0.4 1.2" dir="0.1 0.3 -1" diffuse="0.45 0.45 0.45" specular="0.2 0.2 0.2" castshadow="true"/>
     <light pos="0.8 0.5 0.9" dir="-0.3 -0.4 -1" diffuse="0.2 0.2 0.2" specular="0.1 0.1 0.1" castshadow="false"/>
     <geom name="floor" type="plane" size="1.5 1.5 0.05" material="grid" contype="0" conaffinity="0"/>
-    <camera name="overview" pos="1.05 -0.85 0.62" xyaxes="0.63 0.78 0 -0.3 0.24 0.92" fovy="38"/>
+    <camera name="overview" pos="1.25 -1.05 0.95" xyaxes="0.64 0.77 0 -0.33 0.27 0.9" fovy="40"/>
     <camera name="closeup" pos="{cx + 0.075} {cy - 0.105} {cz + 0.07}" xyaxes="0.81 0.58 0 -0.25 0.35 0.9" fovy="30"/>
     <camera name="macro" pos="{cx + 0.02} {cy - 0.045} {cz + 0.032}" xyaxes="0.91 0.41 0 -0.16 0.36 0.92" fovy="28"/>
     {_berry_xml(cfg)}

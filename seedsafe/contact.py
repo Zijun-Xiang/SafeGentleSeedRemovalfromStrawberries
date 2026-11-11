@@ -141,6 +141,10 @@ class MicroContact:
             j for j in range(self.n_seed)
             if self.state[j] == ATTACHED and np.linalg.norm(cb + self.seat[j] - mid) < 0.004]
         for j in cand:
+            if j == self.held:
+                # a loose seed settles between the two pads (no net force on the tool)
+                self.held_off[0] *= 0.9; self.held_off[2] *= 0.9
+                self.held_off[1] = float(np.clip(self.held_off[1], -0.8 * self.pad_half, 0.8 * self.pad_half))
             c = mid + R_tool @ self.held_off if j == self.held else self.seed_world(j)
             nrm, lat, ok = np.zeros(2), np.zeros(2), True
             for i in range(2):
@@ -190,7 +194,6 @@ class MicroContact:
                 if np.linalg.norm(f_seat) >= self.pull[j]:   # pulled out of the pit
                     self.state[j] = HELD; self.held = j; self.gripped = -1; self.u = np.zeros(3)
                     self.held_off = R_tool.T @ (c - mid)        # where the seed sits between the pads
-                    self.held_off[0] = 0.0                      # free seed: equal force from both pads
         sq = self.f_seed.min()                           # force passed through the seed, jaw to jaw
         if sq > self.peak["squeeze"]: self.peak["squeeze"] = sq
         for j in range(self.n_seed):                     # keep seed markers on the berry

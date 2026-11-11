@@ -1,0 +1,8 @@
+mujoco>=3.2
+numpy
+matplotlib
+pillow
+imageio
+imageio-ffmpeg
+pytest
+# scipy is only needed to re-run scripts/design_grasp.py

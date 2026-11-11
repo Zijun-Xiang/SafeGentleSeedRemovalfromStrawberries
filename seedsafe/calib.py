@@ -4,6 +4,7 @@ measure_force_noise  hold still for a moment and measure how noisy the tip force
                   the touch threshold is set from it
 probe_stiffness   press the closed tweezer tips gently on the fruit (or the proxy berry) and
                   fit the flesh stiffness from the force-displacement curve
+surface_bias      use the same presses to correct the camera's surface-height bias
 recalibrate       recompute the conformal bounds from a few calibration runs in the new domain
 """
 import numpy as np
@@ -14,7 +15,7 @@ from .estimation import ContactEstimator
 from .safety import SafetyFilter
 
 
-def probe_stiffness(env, rcfg, targets, n_spots=3, **kw):
+def probe_stiffness(env, rcfg, targets, n_spots=3, info=None, **kw):
     """Median of a few gentle presses at seed-free spots. Returns the Hertz stiffness k
     (F_total = 2 k delta^1.5), or None if no press gave a usable curve."""
     P = np.array([t["p"] for t in targets]); N = np.array([t["n"] for t in targets])
@@ -29,12 +30,37 @@ def probe_stiffness(env, rcfg, targets, n_spots=3, **kw):
             spots.append(q)
         if len(spots) == n_spots:
             break
-    ks = [k for k in (_press(env, rcfg, q, n, **kw) for q in spots) if k]
-    return float(np.median(ks)) if ks else None
+    fits = [f for f in (_press(env, rcfg, q, n, **kw) for q in spots) if f]
+    if not fits:
+        return None
+    if info is not None:                      # where the surface really was at each probed spot
+        info["normal"] = n
+        info["spots"] = [f[2] for f in fits]
+        info["heights"] = [f[1] for f in fits]
+    return float(np.median([f[0] for f in fits]))
+
+
+def surface_bias(targets, info, radius):
+    """Height error of the camera's surface estimate, measured by the probe touches [m].
+    Positive: the real surface is higher than the camera said. The surface height at a probed
+    spot is predicted from the three nearest seeds (with the berry's curvature) and compared
+    with where the press actually met the surface."""
+    n = info["normal"]
+    P = np.array([t["p"] for t in targets])
+    err = []
+    for q, h_touch in zip(info["spots"], info["heights"]):
+        d = P - q
+        rho2 = np.sum(d * d, axis=1) - (d @ n) ** 2
+        idx = np.argsort(rho2)[:3]
+        pred = np.mean([P[i] @ n + rho2[i] / (2 * radius) for i in idx]) - 0.0  # seeds lie lower when farther away
+        # a seed at lateral distance rho from the spot lies rho^2/(2r) lower than the spot (convex surface)
+        err.append(h_touch - pred)
+    return float(np.median(err))
 
 
 def _press(env, rcfg, best, n, f_stop=0.11, speed=0.0005):
-    """One force-limited press with the tips closed; fits the stiffness."""
+    """One force-limited press with the tips closed. Fits the stiffness and the surface height;
+    returns (k, surface height along n, spot) or None."""
     R = frame_from_axis(-n, (0.0, 1.0, 0.0))
     env.goto(best + n * 0.006, R, speed=0.04, closure_rate=0.5)
     while env.closure < env.jaw_cal.c_closed + 0.005:               # tips together
@@ -66,8 +92,8 @@ def _press(env, rcfg, best, n, f_stop=0.11, speed=0.0005):
         k2 = float(x @ fs / max(x @ x, 1e-30))
         res = float(np.sum((k2 * x - fs) ** 2))
         if best_fit is None or res < best_fit[0]:
-            best_fit = (res, k2 / 2.0)
-    return best_fit[1]
+            best_fit = (res, k2 / 2.0, z0)
+    return best_fit[1], best_fit[2], best
 
 
 def measure_force_noise(env, seconds=1.5):

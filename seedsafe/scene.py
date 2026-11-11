@@ -242,10 +242,15 @@ def build_xml(cfg: Config) -> str:
 
 
 def build_model(cfg: Config):
-    """Compile the scene. Returns (model, grasp dict)."""
-    out = ASSETS / "_generated"
-    out.mkdir(exist_ok=True)
-    path = out / "scene.xml"
-    path.write_text(build_xml(cfg))
-    model = mujoco.MjModel.from_xml_path(str(path))
+    """Compile the scene. Returns (model, grasp dict).
+    The MJCF is also left in assets/_generated/scene.xml, e.g. for `python -m mujoco.viewer`."""
+    xml = build_xml(cfg)
+    # compile from memory with an absolute mesh folder (no file involved: safe for parallel runs)
+    model = mujoco.MjModel.from_xml_string(xml.replace('meshdir=".."', f'meshdir="{ASSETS.as_posix()}"', 1))
+    try:
+        out = ASSETS / "_generated"
+        out.mkdir(exist_ok=True)
+        (out / "scene.xml").write_text(xml)
+    except OSError:
+        pass
     return model, load_grasp()

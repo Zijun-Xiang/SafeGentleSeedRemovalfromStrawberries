@@ -6,6 +6,8 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+import seedsafe  # noqa: E402,F401  (selects the rendering backend before mujoco is imported)
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -206,6 +208,79 @@ def fig_e4():
     for k, u, s in (("surface", "mm", 1e3), ("indent", "mm", 1e3), ("lateral", "mm", 1e3), ("force", "N", 1), ("squeeze", "N", 1)):
         bt.append(f"| {k} [{u}] | {sb[k] * s:.3f} | {rb[k] * s:.3f} |")
     return table(st, [l.replace("\n", " ") for l in labels]), note, "\n".join(bt)
+
+
+def fig_stress():
+    """E1b (mis-tuned planner, without / with filter) and E2b (margin sweep when the filter decides the depth)."""
+    d = json.loads((RES / "e1b_stress.json").read_text())
+    st = [pooled(d["results"], t) for t in ("mis-tuned planner", "mis-tuned planner + filter")]
+    labels = ["mis-tuned planner\n(no filter)", "mis-tuned planner\n+ safety filter"]
+    cols = [GREY, BLUE]
+    fig, ax = plt.subplots(1, 4, figsize=(13, 3.4))
+    rate_bars(ax[0], st, "removal", labels, cols, "seeds removed")
+    rate_bars(ax[1], st, "violation", labels, cols, "seeds with a safe-set violation")
+    strip(ax[2], st, "indent", labels, cols, SAFE.max_indent * 1e3, "peak indentation [mm]", SAFE.visible_indent * 1e3)
+    ax[2].set_title("deepest tip indentation per seed", fontsize=10)
+    strip(ax[3], st, "squeeze", labels, cols, SAFE.max_squeeze, "peak jaw squeeze [N]")
+    ax[3].set_title("largest jaw squeeze per seed", fontsize=10)
+    fig.tight_layout(); fig.savefig(FIG / "e1b_stress.png"); plt.close(fig)
+    t1b = table(st, [l.replace("\n", " ") for l in labels], [("filter intervention", lambda s: f"{100 * s['intervention']:.0f}%")])
+    tags = ["margins: none", "margins: 50%", "mis-tuned planner + filter", "margins: 99%", "margins: 3 x 99%"]
+    labels2 = ["none", "50%", "90%", "99%", "3 x 99%"]
+    sm = [pooled(d["results"], t) for t in tags]
+    cols2 = [GREY, BLUE, BLUE, BLUE, PURPLE]
+    fig, ax = plt.subplots(1, 4, figsize=(14, 3.5))
+    rate_bars(ax[0], sm, "removal", labels2, cols2, "seeds removed")
+    rate_bars(ax[1], sm, "violation", labels2, cols2, "seeds with a safe-set violation")
+    strip(ax[2], sm, "indent", labels2, cols2, SAFE.max_indent * 1e3, "peak indentation [mm]")
+    ax[2].set_title("deepest tip indentation per seed", fontsize=10)
+    ax[3].bar(range(len(sm)), [s["time"] for s in sm], color=cols2, width=0.65)
+    ax[3].set_xticks(range(len(sm))); ax[3].set_xticklabels(labels2, fontsize=8.5); ax[3].set_ylabel("time per seed [s]")
+    ax[3].set_title("time per seed", fontsize=10)
+    for a_ in ax:
+        a_.set_xlabel("conformal bounds used as margins")
+    fig.tight_layout(); fig.savefig(FIG / "e2b_margins.png"); plt.close(fig)
+    t2b = table(sm, ["no margins", "50% bounds", "90% bounds", "99% bounds", "3 x the 99% bounds"], [("filter intervention", lambda s: f"{100 * s['intervention']:.0f}%")])
+    return t1b, t2b, st, sm
+
+
+def fig_e4b():
+    """E4 with the extra variants from run_transfer_fix.py."""
+    d = json.loads((RES / "e4_sim_to_real.json").read_text())
+    d2 = json.loads((RES / "e4b_transfer_fix.json").read_text())
+    res = d["results"] + d2["results"]
+    tags = ["simulation (reference)", "A: sim-calibrated", "B: + on-site probes", "D: + surface re-reference", "E: + re-reference + new bounds"]
+    labels = ["nominal simulation\n(reference)", "A: simulation\ncalibration only", "B: + noise and\nstiffness probes",
+              "C: + surface\nre-referencing", "D: + new\nconformal bounds"]
+    cols = [GREY, RED, ORANGE, PURPLE, BLUE]
+    st = [pooled(res, t) for t in tags]
+    short = ["nominal\nsimulation", "A", "B", "C", "D"]
+    fig, ax = plt.subplots(1, 4, figsize=(16, 3.9))
+    rate_bars(ax[0], st, "removal", short, cols, "seeds removed")
+    rate_bars(ax[1], st, "violation", short, cols, "seeds with a safe-set violation")
+    strip(ax[2], st, "indent", short, cols, SAFE.max_indent * 1e3, "peak indentation [mm]", SAFE.visible_indent * 1e3)
+    for a_ in ax[:3]:
+        a_.set_xlabel("A to D: shifted domain, see the list above")
+    ax[2].set_title("deepest tip indentation per seed", fontsize=10)
+    pr = [r for r in res if r.get("k_hat")]
+    ax[3].scatter([r["k_true"] for r in pr], [r["k_hat"] for r in pr], s=14, color=BLUE, alpha=0.7)
+    lim = [0, max([r["k_true"] for r in pr] + [r["k_hat"] for r in pr]) * 1.1]
+    ax[3].plot(lim, lim, color="k", lw=0.8, ls=":")
+    ax[3].axhline(Config().berry.hertz_k, color=GREY, lw=1); ax[3].text(lim[0], Config().berry.hertz_k, " value assumed in simulation", fontsize=8, va="bottom", color=GREY)
+    ax[3].set_xlabel("true flesh stiffness [N/m^1.5]"); ax[3].set_ylabel("stiffness from the probe presses")
+    ax[3].set_title("on-site stiffness probe", fontsize=10)
+    fig.tight_layout(); fig.savefig(FIG / "e4_sim_to_real.png"); plt.close(fig)
+    probe = [r["probe_peak"] for r in res if r.get("k_hat") and r.get("probe_peak")]
+    pi = np.array([p["indent"] for p in probe]) * 1e3
+    rel = np.array([abs(r["k_hat"] - r["k_true"]) / r["k_true"] for r in pr])
+    note = dict(n=len(pi), med=float(np.median(pi)), mx=float(pi.max()), over=float(np.mean(pi > SAFE.max_indent * 1e3)),
+                k_err=float(np.median(rel)))
+    sb, rb = d2["sim_bounds"], d2["real_bounds"]
+    bt = ["| bound (90% coverage) | from the nominal simulation | recalibrated in the shifted domain |", "|---|---|---|"]
+    for k, lab, u, sc in (("surface", "surface height before touch", "mm", 1e3), ("indent", "indentation after touch", "mm", 1e3),
+                          ("lateral", "seed position, sideways", "mm", 1e3), ("force", "tip force", "N", 1), ("squeeze", "jaw squeeze", "N", 1)):
+        bt.append(f"| {lab} [{u}] | {sb[k] * sc:.3f} | {rb[k] * sc:.3f} |")
+    return table(st, [l.replace("\n", " ") for l in labels]), note, "\n".join(bt), st
 
 
 if __name__ == "__main__":

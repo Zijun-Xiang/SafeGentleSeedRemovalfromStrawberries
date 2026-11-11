@@ -1,0 +1,8 @@
+step scene: 4 s
+jaws meet at closure 0.477; gauge touched at 0.428; squeeze at max closure 0.423 N (5.02 N per unit closure); squeeze estimate rms error on the gauge 0.0145 N
+step calibration: 3 s
+step contact: 7 s
+step perception: 33 s
+step single: 10 s
+step conformal: 0 s
+step tests: 23 s

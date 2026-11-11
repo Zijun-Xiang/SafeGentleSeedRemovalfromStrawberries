@@ -17,10 +17,10 @@ import pathlib
 import sys
 import time
 
-if sys.platform.startswith("linux"):
-    os.environ.setdefault("MUJOCO_GL", "egl")
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+
+import seedsafe  # noqa: E402,F401  (selects the rendering backend before mujoco is imported)
 
 import numpy as np
 

@@ -3,3 +3,271 @@
   [           calibration] berry 1001: removed 1.00  violations 0.00  7.2 s/seed  (28 s wall)
   [           calibration] berry 1002: removed 1.00  violations 0.00  6.9 s/seed  (26 s wall)
   [           calibration] berry 1003: removed 1.00  violations 0.00  7.3 s/seed  (28 s wall)
+  [           calibration] berry 1004: removed 1.00  violations 0.00  7.6 s/seed  (29 s wall)
+  [           calibration] berry 1005: removed 1.00  violations 0.00  7.2 s/seed  (28 s wall)
+  [           calibration] berry 1006: removed 1.00  violations 0.00  7.8 s/seed  (31 s wall)
+  [           calibration] berry 1007: removed 1.00  violations 0.00  7.5 s/seed  (31 s wall)
+  [           calibration] berry 1009: removed 1.00  violations 0.00  8.2 s/seed  (30 s wall)
+  [           calibration] berry 1008: removed 1.00  violations 0.00  8.4 s/seed  (31 s wall)
+saved results/calibration.json
+=== e1 ===
+  [             open_loop] berry   0: removed 0.88  violations 0.12  8.3 s/seed  (29 s wall)
+  [             open_loop] berry   1: removed 1.00  violations 0.00  9.6 s/seed  (34 s wall)
+  [             open_loop] berry   2: removed 1.00  violations 0.00  7.4 s/seed  (25 s wall)
+  [             open_loop] berry   3: removed 1.00  violations 0.00  6.8 s/seed  (24 s wall)
+  [             open_loop] berry   5: removed 0.00  violations 1.00  6.9 s/seed  (26 s wall)
+  [             open_loop] berry   4: removed 1.00  violations 0.00  8.4 s/seed  (30 s wall)
+  [             open_loop] berry   6: removed 1.00  violations 1.00  7.0 s/seed  (24 s wall)
+  [             open_loop] berry   7: removed 1.00  violations 0.00  7.0 s/seed  (24 s wall)
+  [                 touch] berry   1: removed 1.00  violations 0.00  6.9 s/seed  (24 s wall)
+  [                 touch] berry   0: removed 1.00  violations 0.00  6.9 s/seed  (25 s wall)
+  [                 touch] berry   2: removed 1.00  violations 0.00  6.8 s/seed  (24 s wall)
+  [                 touch] berry   3: removed 1.00  violations 0.00  6.7 s/seed  (24 s wall)
+  [                 touch] berry   4: removed 1.00  violations 0.00  7.0 s/seed  (23 s wall)
+  [                 touch] berry   5: removed 1.00  violations 0.00  6.6 s/seed  (23 s wall)
+  [                 touch] berry   6: removed 1.00  violations 0.00  6.7 s/seed  (23 s wall)
+  [                 touch] berry   7: removed 1.00  violations 0.00  6.8 s/seed  (24 s wall)
+  [              filtered] berry   0: removed 1.00  violations 0.00  8.0 s/seed  (31 s wall)
+  [              filtered] berry   1: removed 1.00  violations 0.00  7.6 s/seed  (30 s wall)
+  [              filtered] berry   3: removed 1.00  violations 0.00  7.3 s/seed  (28 s wall)
+  [              filtered] berry   2: removed 1.00  violations 0.00  7.4 s/seed  (29 s wall)
+  [              filtered] berry   5: removed 1.00  violations 0.00  7.0 s/seed  (27 s wall)
+  [              filtered] berry   4: removed 1.00  violations 0.00  7.5 s/seed  (28 s wall)
+  [              filtered] berry   6: removed 1.00  violations 0.00  7.1 s/seed  (26 s wall)
+  [              filtered] berry   7: removed 1.00  violations 0.00  7.3 s/seed  (27 s wall)
+saved results/e1_filter_vs_baseline.json
+=== e2 ===
+  [             no margin] berry   1: removed 1.00  violations 0.00  7.7 s/seed  (29 s wall)
+  [             no margin] berry   0: removed 1.00  violations 0.00  8.0 s/seed  (31 s wall)
+  [             no margin] berry   2: removed 1.00  violations 0.00  7.1 s/seed  (27 s wall)
+  [             no margin] berry   3: removed 1.00  violations 0.00  7.0 s/seed  (27 s wall)
+  [             no margin] berry   4: removed 1.00  violations 0.00  7.2 s/seed  (28 s wall)
+  [             no margin] berry   5: removed 1.00  violations 0.00  6.7 s/seed  (28 s wall)
+  [             no margin] berry   6: removed 1.00  violations 0.00  6.8 s/seed  (26 s wall)
+  [             no margin] berry   7: removed 1.00  violations 0.00  7.1 s/seed  (27 s wall)
+  [             alpha=0.5] berry   0: removed 1.00  violations 0.00  8.1 s/seed  (31 s wall)
+  [             alpha=0.5] berry   1: removed 1.00  violations 0.00  7.3 s/seed  (30 s wall)
+  [             alpha=0.5] berry   2: removed 1.00  violations 0.00  7.1 s/seed  (28 s wall)
+  [             alpha=0.5] berry   3: removed 1.00  violations 0.00  7.1 s/seed  (28 s wall)
+  [             alpha=0.5] berry   4: removed 1.00  violations 0.00  7.3 s/seed  (26 s wall)
+  [             alpha=0.5] berry   5: removed 1.00  violations 0.00  6.7 s/seed  (24 s wall)
+  [             alpha=0.5] berry   7: removed 1.00  violations 0.00  7.1 s/seed  (27 s wall)
+  [             alpha=0.5] berry   6: removed 1.00  violations 0.00  8.2 s/seed  (31 s wall)
+  [             alpha=0.2] berry   0: removed 1.00  violations 0.00  7.4 s/seed  (29 s wall)
+  [             alpha=0.2] berry   1: removed 1.00  violations 0.00  7.5 s/seed  (28 s wall)
+  [             alpha=0.2] berry   2: removed 1.00  violations 0.00  7.3 s/seed  (28 s wall)
+  [             alpha=0.2] berry   3: removed 1.00  violations 0.00  7.2 s/seed  (27 s wall)
+  [             alpha=0.2] berry   5: removed 1.00  violations 0.00  6.9 s/seed  (25 s wall)
+  [             alpha=0.2] berry   4: removed 1.00  violations 0.00  7.4 s/seed  (26 s wall)
+  [             alpha=0.2] berry   6: removed 1.00  violations 0.00  7.0 s/seed  (28 s wall)
+  [             alpha=0.2] berry   7: removed 1.00  violations 0.00  7.2 s/seed  (29 s wall)
+  [             alpha=0.1] berry   1: removed 1.00  violations 0.00  7.6 s/seed  (28 s wall)
+  [             alpha=0.1] berry   0: removed 1.00  violations 0.00  8.0 s/seed  (31 s wall)
+  [             alpha=0.1] berry   2: removed 1.00  violations 0.00  7.4 s/seed  (28 s wall)
+  [             alpha=0.1] berry   3: removed 1.00  violations 0.00  7.3 s/seed  (29 s wall)
+  [             alpha=0.1] berry   5: removed 1.00  violations 0.00  7.0 s/seed  (26 s wall)
+  [             alpha=0.1] berry   4: removed 1.00  violations 0.00  7.5 s/seed  (29 s wall)
+  [             alpha=0.1] berry   6: removed 1.00  violations 0.00  7.1 s/seed  (28 s wall)
+  [             alpha=0.1] berry   7: removed 1.00  violations 0.00  7.3 s/seed  (29 s wall)
+  [            alpha=0.05] berry   1: removed 1.00  violations 0.00  7.6 s/seed  (29 s wall)
+  [            alpha=0.05] berry   0: removed 1.00  violations 0.00  8.5 s/seed  (33 s wall)
+  [            alpha=0.05] berry   2: removed 1.00  violations 0.00  7.4 s/seed  (28 s wall)
+  [            alpha=0.05] berry   3: removed 1.00  violations 0.00  7.3 s/seed  (28 s wall)
+  [            alpha=0.05] berry   4: removed 1.00  violations 0.00  7.5 s/seed  (27 s wall)
+  [            alpha=0.05] berry   5: removed 1.00  violations 0.00  7.0 s/seed  (27 s wall)
+  [            alpha=0.05] berry   6: removed 1.00  violations 0.00  7.2 s/seed  (27 s wall)
+  [            alpha=0.05] berry   7: removed 1.00  violations 0.00  7.4 s/seed  (29 s wall)
+  [            alpha=0.01] berry   1: removed 1.00  violations 0.00  7.8 s/seed  (31 s wall)
+  [            alpha=0.01] berry   0: removed 1.00  violations 0.00  8.2 s/seed  (35 s wall)
+  [            alpha=0.01] berry   2: removed 1.00  violations 0.00  7.6 s/seed  (31 s wall)
+  [            alpha=0.01] berry   3: removed 1.00  violations 0.00  7.5 s/seed  (30 s wall)
+  [            alpha=0.01] berry   5: removed 1.00  violations 0.00  7.2 s/seed  (28 s wall)
+  [            alpha=0.01] berry   4: removed 1.00  violations 0.00  7.7 s/seed  (30 s wall)
+  [            alpha=0.01] berry   6: removed 1.00  violations 0.00  7.4 s/seed  (29 s wall)
+  [            alpha=0.01] berry   7: removed 1.00  violations 0.00  7.6 s/seed  (29 s wall)
+saved results/e2_uncertainty.json
+=== e3 ===
+  [                teleop] berry   0: removed 0.75  violations 0.75  11.4 s/seed  (34 s wall)
+  [                teleop] berry   1: removed 0.88  violations 0.50  11.5 s/seed  (34 s wall)
+  [                teleop] berry   3: removed 0.75  violations 0.50  10.0 s/seed  (30 s wall)
+  [                teleop] berry   2: removed 0.75  violations 0.62  11.3 s/seed  (34 s wall)
+  [                teleop] berry   4: removed 0.88  violations 0.75  11.5 s/seed  (32 s wall)
+  [                teleop] berry   5: removed 0.88  violations 0.62  12.0 s/seed  (34 s wall)
+  [                teleop] berry   6: removed 0.62  violations 0.88  10.9 s/seed  (33 s wall)
+  [                teleop] berry   7: removed 0.75  violations 0.62  12.1 s/seed  (35 s wall)
+  [       teleop_filtered] berry   1: removed 0.50  violations 0.12  17.4 s/seed  (74 s wall)
+  [       teleop_filtered] berry   0: removed 0.25  violations 0.12  22.5 s/seed  (103 s wall)
+  [       teleop_filtered] berry   2: removed 0.38  violations 0.00  22.1 s/seed  (97 s wall)
+  [       teleop_filtered] berry   3: removed 0.25  violations 0.00  22.6 s/seed  (103 s wall)
+  [       teleop_filtered] berry   4: removed 0.25  violations 0.12  20.1 s/seed  (80 s wall)
+  [       teleop_filtered] berry   5: removed 0.25  violations 0.12  22.8 s/seed  (96 s wall)
+  [       teleop_filtered] berry   6: removed 0.00  violations 0.00  23.6 s/seed  (104 s wall)
+  [       teleop_filtered] berry   7: removed 0.25  violations 0.00  17.2 s/seed  (67 s wall)
+  [       shared_filtered] berry   0: removed 1.00  violations 0.00  9.8 s/seed  (33 s wall)
+  [       shared_filtered] berry   1: removed 1.00  violations 0.00  9.9 s/seed  (32 s wall)
+  [       shared_filtered] berry   2: removed 1.00  violations 0.00  10.1 s/seed  (32 s wall)
+  [       shared_filtered] berry   3: removed 1.00  violations 0.00  9.6 s/seed  (31 s wall)
+  [       shared_filtered] berry   4: removed 1.00  violations 0.00  10.9 s/seed  (34 s wall)
+  [       shared_filtered] berry   5: removed 1.00  violations 0.00  9.4 s/seed  (30 s wall)
+  [       shared_filtered] berry   7: removed 1.00  violations 0.00  9.8 s/seed  (31 s wall)
+  [       shared_filtered] berry   6: removed 1.00  violations 0.00  10.5 s/seed  (34 s wall)
+  [              filtered] berry   1: removed 1.00  violations 0.00  7.6 s/seed  (29 s wall)
+  [              filtered] berry   0: removed 1.00  violations 0.00  8.0 s/seed  (30 s wall)
+  [              filtered] berry   2: removed 1.00  violations 0.00  7.4 s/seed  (28 s wall)
+  [              filtered] berry   3: removed 1.00  violations 0.00  7.3 s/seed  (28 s wall)
+  [              filtered] berry   5: removed 1.00  violations 0.00  7.0 s/seed  (26 s wall)
+  [              filtered] berry   4: removed 1.00  violations 0.00  7.5 s/seed  (28 s wall)
+  [              filtered] berry   6: removed 1.00  violations 0.00  7.1 s/seed  (26 s wall)
+  [              filtered] berry   7: removed 1.00  violations 0.00  7.3 s/seed  (27 s wall)
+saved results/e3_shared_control.json
+=== e4 ===
+  [simulation (reference)] berry 1 FAILED
+Traceback (most recent call last):
+  File "/home/claude/safegentleseedremovalfromstrawberries/scripts/run_experiments.py", line 51, in _job
+    out = run_berry(**kw)
+  File "/home/claude/safegentleseedremovalfromstrawberries/seedsafe/runner.py", line 220, in run_berry
+    env = make_env(cfg, seed=seed, berry=berry)
+  File "/home/claude/safegentleseedremovalfromstrawberries/seedsafe/runner.py", line 17, in make_env
+    env = SeedEnv(cfg)
+  File "/home/claude/safegentleseedremovalfromstrawberries/seedsafe/env.py", line 49, in __init__
+    _MODEL_CACHE[key] = build_model(self.cfg)
+                        ~~~~~~~~~~~^^^^^^^^^^
+  File "/home/claude/safegentleseedremovalfromstrawberries/seedsafe/scene.py", line 250, in build_model
+    model = mujoco.MjModel.from_xml_path(str(path))
+ValueError: ParseXML: empty file '/home/claude/safegentleseedremovalfromstrawberries/assets/_generated/scene.xml'
+
+  [simulation (reference)] berry   2: removed 1.00  violations 0.00  7.4 s/seed  (30 s wall)
+  [simulation (reference)] berry   0: removed 1.00  violations 0.00  8.0 s/seed  (31 s wall)
+  [simulation (reference)] berry   4: removed 1.00  violations 0.00  7.5 s/seed  (29 s wall)
+  [simulation (reference)] berry   3: removed 1.00  violations 0.00  7.3 s/seed  (31 s wall)
+  [simulation (reference)] berry   5: removed 1.00  violations 0.00  7.0 s/seed  (27 s wall)
+  [simulation (reference)] berry   6: removed 1.00  violations 0.00  7.1 s/seed  (28 s wall)
+  [simulation (reference)] berry   7: removed 1.00  violations 0.00  7.3 s/seed  (28 s wall)
+  [     A: sim-calibrated] berry   1: removed 1.00  violations 0.12  k_hat=None  k_true=3843  (31 s wall)
+  [     A: sim-calibrated] berry   0: removed 1.00  violations 0.12  k_hat=None  k_true=5633  (32 s wall)
+  [     A: sim-calibrated] berry   2: removed 0.88  violations 0.00  k_hat=None  k_true=4872  (30 s wall)
+  [     A: sim-calibrated] berry   3: removed 1.00  violations 0.62  k_hat=None  k_true=3066  (34 s wall)
+  [     A: sim-calibrated] berry   4: removed 0.88  violations 0.12  k_hat=None  k_true=4898  (29 s wall)
+  [     A: sim-calibrated] berry   5: removed 1.00  violations 0.50  k_hat=None  k_true=2923  (27 s wall)
+  [     A: sim-calibrated] berry   6: removed 1.00  violations 0.00  k_hat=None  k_true=6255  (28 s wall)
+  [     A: sim-calibrated] berry   7: removed 1.00  violations 0.00  k_hat=None  k_true=3802  (28 s wall)
+  [   B: + on-site probes] berry   0: removed 0.25  violations 0.12  k_hat=4530.922279936288  k_true=5633  (82 s wall)
+  [   B: + on-site probes] berry   1: removed 0.00  violations 0.00  k_hat=3439.4056175103638  k_true=3843  (148 s wall)
+  [   B: + on-site probes] berry   2: removed 0.00  violations 0.00  k_hat=3112.0569621726777  k_true=4872  (144 s wall)
+  [   B: + on-site probes] berry   3: removed 0.00  violations 0.00  k_hat=2624.1104285016745  k_true=3066  (133 s wall)
+  [   B: + on-site probes] berry   5: removed 1.00  violations 0.38  k_hat=1969.0658692934032  k_true=2923  (49 s wall)
+  [   B: + on-site probes] berry   4: removed 0.12  violations 0.12  k_hat=4175.667865235369  k_true=4898  (114 s wall)
+  [   B: + on-site probes] berry   6: removed 1.00  violations 0.00  k_hat=4294.118987895774  k_true=6255  (41 s wall)
+  [    recalibration runs] berry 2000: removed 0.38  violations 0.00  k_hat=4595.577001786094  k_true=5040  (157 s wall)
+  [   B: + on-site probes] berry   7: removed 0.00  violations 0.00  k_hat=2900.8982400665873  k_true=3802  (209 s wall)
+  [    recalibration runs] berry 2001: removed 0.25  violations 0.00  k_hat=3653.862394416127  k_true=4272  (96 s wall)
+  [    recalibration runs] berry 2002: removed 0.00  violations 0.00  k_hat=5089.0202709034365  k_true=5202  (80 s wall)
+  [    recalibration runs] berry 2003: removed 0.25  violations 0.00  k_hat=5038.310186860131  k_true=6236  (99 s wall)
+  [C: + probes + new bounds] berry   1: removed 0.00  violations 0.00  k_hat=3448.106176981598  k_true=3843  (58 s wall)
+  [C: + probes + new bounds] berry   0: removed 0.12  violations 0.12  k_hat=4522.434382744041  k_true=5633  (79 s wall)
+  [C: + probes + new bounds] berry   2: removed 0.12  violations 0.12  k_hat=3096.0818358254614  k_true=4872  (85 s wall)
+  [C: + probes + new bounds] berry   3: removed 0.00  violations 0.00  k_hat=2611.2935066932455  k_true=3066  (99 s wall)
+  [C: + probes + new bounds] berry   4: removed 0.25  violations 0.12  k_hat=4140.526140686079  k_true=4898  (114 s wall)
+  [C: + probes + new bounds] berry   5: removed 0.75  violations 0.12  k_hat=1969.0658692934032  k_true=2923  (86 s wall)
+  [C: + probes + new bounds] berry   6: removed 1.00  violations 0.00  k_hat=4294.118987895774  k_true=6255  (80 s wall)
+  [C: + probes + new bounds] berry   7: removed 1.00  violations 0.00  k_hat=2850.330857130247  k_true=3802  (89 s wall)
+saved results/e4_sim_to_real.json
+done in 53.3 min
+  [     mis-tuned planner] berry   0: removed 0.00  violations 1.00  5.8 s/seed  (46 s wall)
+  [     mis-tuned planner] berry   1: removed 0.00  violations 1.00  6.0 s/seed  (46 s wall)
+  [     mis-tuned planner] berry   3: removed 0.00  violations 1.00  5.9 s/seed  (45 s wall)
+  [     mis-tuned planner] berry   2: removed 0.00  violations 1.00  6.6 s/seed  (51 s wall)
+  [     mis-tuned planner] berry   5: removed 0.00  violations 1.00  5.8 s/seed  (43 s wall)
+  [     mis-tuned planner] berry   4: removed 0.00  violations 1.00  6.7 s/seed  (52 s wall)
+  [     mis-tuned planner] berry   7: removed 0.00  violations 1.00  5.8 s/seed  (45 s wall)
+  [     mis-tuned planner] berry   6: removed 0.00  violations 1.00  7.9 s/seed  (74 s wall)
+  [mis-tuned planner + filter] berry   1: removed 0.00  violations 0.12  14.0 s/seed  (142 s wall)
+  [mis-tuned planner + filter] berry   0: removed 0.00  violations 0.25  20.6 s/seed  (220 s wall)
+  [mis-tuned planner + filter] berry   2: removed 0.00  violations 0.12  17.4 s/seed  (214 s wall)
+Process SpawnPoolWorker-1:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/connection.py", line 205, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/connection.py", line 432, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/connection.py", line 389, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/local/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/connection.py", line 205, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/connection.py", line 432, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/connection.py", line 389, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+  [mis-tuned planner + filter] berry   3: removed 0.00  violations 0.38  16.1 s/seed  (177 s wall)
+Process SpawnPoolWorker-2:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/connection.py", line 205, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/connection.py", line 432, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/connection.py", line 389, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/local/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/connection.py", line 205, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/connection.py", line 432, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/multiprocessing/connection.py", line 389, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+/usr/local/lib/python3.13/multiprocessing/resource_tracker.py:479: UserWarning: resource_tracker: There appear to be 6 leaked semaphore objects to clean up at shutdown: {'/mp-4gr8c9_4', '/mp-5d5hqm2m', '/mp-yehvv3kf', '/mp-4v7ppz0d', '/mp-uv84gjep', '/mp-z9k4qh1e'}
+  warnings.warn(

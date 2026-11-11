@@ -480,7 +480,8 @@ video were produced on a cloud machine (Python 3.13, MuJoCo 4.0) and copied to t
 ## Limits and what is simplified
 
 - **No hardware.** No real arm, hand, tweezers or fruit were used. The arm model is a Rizon 4,
-  not an Enlight.
+  not an Enlight. The hand model is the public Wuji Hand description from the maker; it was
+  not checked against the second-generation hardware.
 - **Fruit model.** The berry is a rigid ellipsoid on a soft cradle. Deformation exists only as
   the contact law at the two tips. There is no finite-element flesh, no pits, no tearing.
   Stiffness, pull-out force and damage limits are plausible guesses, not measurements.

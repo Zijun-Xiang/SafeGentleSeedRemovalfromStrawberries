@@ -97,6 +97,7 @@ Modes: `open_loop`, `touch`, `filtered` (the proposed system), `teleop`, `teleop
 ## Simplifications to know about
 
 - The arm is a Flexiv Rizon 4 model, standing in for the Flexiv Enlight (no public Enlight model).
+- The hand is the maker's public Wuji Hand model; it was not checked against the second-generation hardware.
 - The tweezer sleeve is held in the hand by a friction-limited seat (it slips when overloaded);
   thumb and index press the tweezer arms through real simulated contacts.
 - The fruit is a rigid ellipsoid on a soft cradle with a compliant contact law at the two tips
